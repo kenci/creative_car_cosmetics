@@ -43,8 +43,22 @@ function PagesContent() {
 }
 
 export default function Pages() {
+    const normalizeBasename = (value) => {
+        let base = value || '/';
+        if (!base.startsWith('/')) {
+            base = `/${base}`;
+        }
+        if (base.length > 1 && base.endsWith('/')) {
+            base = base.slice(0, -1);
+        }
+        return base;
+    };
+    const baseUrl = import.meta.env.BASE_URL || '/';
+    const normalizedBase = baseUrl && baseUrl !== './'
+        ? normalizeBasename(baseUrl)
+        : normalizeBasename(new URL('.', window.location.href).pathname);
     return (
-        <Router>
+        <Router basename={normalizedBase}>
             <PagesContent />
         </Router>
     );

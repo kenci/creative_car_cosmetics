@@ -100,7 +100,7 @@ export default function Navigation() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-[#0b0b0b]/98 pt-24 px-6 lg:hidden"
+            className="fixed inset-0 z-40 bg-gradient-to-b from-[#111111] to-[#0b0b0b] pt-24 px-6 shadow-2xl lg:hidden"
           >
             <div className="flex flex-col items-center gap-6">
               {navLinks.map((link, index) => (
